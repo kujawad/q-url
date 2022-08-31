@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {QurlService} from "../service/qurl.service";
 
 @Component({
@@ -9,7 +9,7 @@ import {QurlService} from "../service/qurl.service";
 })
 export class QurlComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private qUrlService: QurlService, private router: Router) {
+  constructor(private route: ActivatedRoute, private qUrlService: QurlService) {
   }
 
   ngOnInit(): void {
