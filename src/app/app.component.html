@@ -1,0 +1,40 @@
+<router-outlet></router-outlet>
+<header>
+  <a href="/">
+    <img alt="q-url logo" class="logo" src="https://i.imgur.com/OobxsUx.png">
+  </a>
+</header>
+<div class="container">
+  <div *ngIf="error && !hideError" class="error">
+    {{error}}
+  </div>
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <input [(ngModel)]="url" class="input" id="url" name="url" placeholder="enter a url" type="text">
+      </div>
+      <div class="form-group">
+        <input [(ngModel)]="stamp" class="input" id="stamp" name="stamp" placeholder="enter a stamp (optional)"
+               type="text">
+      </div>
+      <div class="form-group">
+        <input [(ngModel)]="usages" class="input" id="usages" name="usages" placeholder="enter usages (optional)"
+               type="text">
+      </div>
+      <div class="form-group justify-content-center display-flex">
+        <button class="btn create" type="submit">create</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="submitted">
+    <div style="display: flex; margin: 16px">
+      <p class="created info">Your quick url is: <a class="js-copy-link" href="{{rlink}}" id="link">{{rlink}}</a></p>
+      <ng-container *ngIf="copied;else second">
+        <button (click)="copyLink(rlink)" class="create btn copy-link copied">copy</button>
+      </ng-container>
+      <ng-template #second>
+        <button (click)="copyLink(rlink)" class="create btn copy-link">copy</button>
+      </ng-template>
+    </div>
+  </div>
+</div>
