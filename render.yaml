@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: q-url
+    env: docker
+    repo: https://github.com/kujawad/q-url
+    region: frankfurt
+    plan: free
+    branch: master
+    numInstances: 1
+    healthCheckPath: /health
+    envVars:
+      - key: SERVER_PORT
+        value: 443
