@@ -54,7 +54,6 @@ header {
 }
 
 .input {
-  font-family: inherit;
   padding-bottom: 1rem;
   background: none;
   border: none;
@@ -62,6 +61,7 @@ header {
   border-bottom: 2px solid #ffffff;
   text-align: center;
   font-size: 1.25rem;
+  font-weight: lighter;
   transition: border-bottom-color 0.3s ease-in-out;
   caret-color: #db00db;
   width: 100%;
@@ -132,4 +132,13 @@ input:focus::placeholder {
 
 .copy-link.create {
   width: 15%;
+}
+
+.copied.create {
+  background-color: #88e075;
+}
+
+.btn:active {
+  transform: translate(4px, 4px);
+  /* Moving button 4px to y-axis */
 }

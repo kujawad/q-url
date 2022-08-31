@@ -14,6 +14,7 @@ export class AppComponent {
   usages: any;
   rlink: any;
   submitted = false;
+  copied = false;
   qUrlService: QurlService;
 
   constructor(qUrlService: QurlService) {
@@ -21,6 +22,9 @@ export class AppComponent {
   }
 
   onSubmit() {
+    if (!this.url) {
+      return
+    }
     const _this = this;
     this.qUrlService.addUrl('/urls', {url: this.url, stamp: this.stamp, usages: this.usages})
       .subscribe({
@@ -32,5 +36,10 @@ export class AppComponent {
           _this.submitted = error.status == 200;
         }
       });
+  }
+
+  copyLink(rlink: string) {
+    this.copied = true;
+    window.navigator.clipboard.writeText(rlink).then();
   }
 }

@@ -11,22 +11,25 @@
         <input [(ngModel)]="url" class="input" id="url" name="url" placeholder="enter a url" type="text">
       </div>
       <div class="form-group">
-        <input [(ngModel)]="stamp" class="input" id="stamp" name="stamp" placeholder="enter a stamp" type="text">
+        <input [(ngModel)]="stamp" class="input" id="stamp" name="stamp" placeholder="enter a stamp (optional)" type="text">
       </div>
       <div class="form-group">
-        <input [(ngModel)]="usages" class="input" id="usages" name="usages" placeholder="enter usages" type="text">
+        <input [(ngModel)]="usages" class="input" id="usages" name="usages" placeholder="enter usages (optional)" type="text">
       </div>
       <div class="form-group justify-content-center display-flex">
-        <button class="create" type="submit">create</button>
+        <button class="btn create" type="submit">create</button>
       </div>
     </form>
   </div>
   <div *ngIf="submitted">
     <div style="display: flex; margin: 16px">
       <p class="created info">Your quick url is: <a class="js-copy-link" href="{{rlink}}" id="link">{{rlink}}</a></p>
-      <button class="create btn copy-link" onclick="copyLink()">copy</button>
+      <ng-container *ngIf="copied;else second">
+        <button (click)="copyLink(rlink)" class="create btn copy-link copied">copy</button>
+      </ng-container>
+      <ng-template #second>
+        <button (click)="copyLink(rlink)" class="create btn copy-link">copy</button>
+      </ng-template>
     </div>
-    <!-- TODO: handle the usages left -->
-    <!--<p class="created">Usages left: {{usagesLeft}}</p>-->
   </div>
 </div>
