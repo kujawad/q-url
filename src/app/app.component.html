@@ -5,16 +5,21 @@
   </a>
 </header>
 <div class="container">
+  <div *ngIf="error && !hideError" class="error">
+    {{error}}
+  </div>
   <div [hidden]="submitted">
     <form (ngSubmit)="onSubmit()" class="form">
       <div class="form-group">
         <input [(ngModel)]="url" class="input" id="url" name="url" placeholder="enter a url" type="text">
       </div>
       <div class="form-group">
-        <input [(ngModel)]="stamp" class="input" id="stamp" name="stamp" placeholder="enter a stamp (optional)" type="text">
+        <input [(ngModel)]="stamp" class="input" id="stamp" name="stamp" placeholder="enter a stamp (optional)"
+               type="text">
       </div>
       <div class="form-group">
-        <input [(ngModel)]="usages" class="input" id="usages" name="usages" placeholder="enter usages (optional)" type="text">
+        <input [(ngModel)]="usages" class="input" id="usages" name="usages" placeholder="enter usages (optional)"
+               type="text">
       </div>
       <div class="form-group justify-content-center display-flex">
         <button class="btn create" type="submit">create</button>

@@ -15,7 +15,9 @@ export class AppComponent {
   rlink: any;
   submitted = false;
   copied = false;
+  hideError = false;
   qUrlService: QurlService;
+  error: any;
 
   constructor(qUrlService: QurlService) {
     this.qUrlService = qUrlService;
@@ -34,8 +36,17 @@ export class AppComponent {
         },
         error(error) {
           _this.submitted = error.status == 200;
+          _this.error = error.message;
+          _this.fadeoutError();
         }
       });
+  }
+
+  fadeoutError() {
+    setTimeout( () => {
+      this.hideError = true;
+    }, 3000);
+    this.hideError = false;
   }
 
   copyLink(rlink: string) {
