@@ -7,7 +7,7 @@ services:
     plan: free
     branch: master
     numInstances: 1
-    healthCheckPath: /health
+    healthCheckPath: /
     envVars:
       - key: SERVER_PORT
         value: 443
