@@ -31,12 +31,12 @@ export class AppComponent {
     this.qUrlService.addUrl('/urls', {url: this.url, stamp: this.stamp, usages: this.usages})
       .subscribe({
         next(resp) {
-          _this.submitted = resp.status == 200;
+          _this.submitted = resp.status == 201;
           _this.rlink = environment.QURL_URL + '/' + resp.body.stamp;
         },
         error(error) {
           _this.submitted = error.status == 200;
-          _this.error = error.message;
+          _this.error = error.details;
           _this.fadeoutError();
         }
       });
