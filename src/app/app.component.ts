@@ -35,7 +35,7 @@ export class AppComponent {
           _this.rlink = environment.QURL_URL + '/' + resp.body.stamp;
         },
         error(error) {
-          _this.submitted = error.status == 200;
+          _this.submitted = error.status == 201;
           _this.error = error.details;
           _this.fadeoutError();
         }
