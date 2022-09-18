@@ -16,7 +16,7 @@ export class QurlComponent implements OnInit {
     const _this = this;
     this.route.params.subscribe({
       next(params) {
-        _this.qUrlService.serveUrl('/urls/' + params['stamp']).subscribe({
+        _this.qUrlService.serveUrl('/urls/' + params['stamp'] + '/generate').subscribe({
           next(response) {
             window.location.href = response.body.rlink;
           }
