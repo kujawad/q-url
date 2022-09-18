@@ -5,8 +5,10 @@
   </a>
 </header>
 <div class="container">
-  <div *ngIf="error && !hideError" class="error">
-    {{error}}
+  <div *ngIf="errors && !hideError">
+    <div *ngFor="let error of errors" class="error">
+      {{error.message}}
+    </div>
   </div>
   <div [hidden]="submitted">
     <form (ngSubmit)="onSubmit()" class="form">

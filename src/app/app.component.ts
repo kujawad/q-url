@@ -17,7 +17,7 @@ export class AppComponent {
   copied = false;
   hideError = false;
   qUrlService: QurlService;
-  error: any;
+  errors: any;
 
   constructor(qUrlService: QurlService) {
     this.qUrlService = qUrlService;
@@ -35,8 +35,8 @@ export class AppComponent {
           _this.rlink = environment.QURL_URL + '/' + resp.body.stamp;
         },
         error(error) {
-          _this.submitted = error.status == 201;
-          _this.error = error.details;
+          _this.submitted = false;
+          _this.errors = error["validation-errors"];
           _this.fadeoutError();
         }
       });
@@ -45,7 +45,7 @@ export class AppComponent {
   fadeoutError() {
     setTimeout( () => {
       this.hideError = true;
-    }, 3000);
+    }, 4000);
     this.hideError = false;
   }
 
